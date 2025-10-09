@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/10/2025 às 20:35
+-- Tempo de geração: 09/10/2025 às 21:50
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `trocaspokemon`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `equipe`
+--
+
+CREATE TABLE `equipe` (
+  `idTreinador` int(11) NOT NULL,
+  `idPokemon` int(11) NOT NULL,
+  `idEquipe` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -67,6 +79,14 @@ CREATE TABLE `troca` (
 --
 
 --
+-- Índices de tabela `equipe`
+--
+ALTER TABLE `equipe`
+  ADD PRIMARY KEY (`idEquipe`),
+  ADD KEY `idPokemon` (`idPokemon`),
+  ADD KEY `idTreinador` (`idTreinador`);
+
+--
 -- Índices de tabela `pokemon`
 --
 ALTER TABLE `pokemon`
@@ -94,6 +114,12 @@ ALTER TABLE `troca`
 --
 
 --
+-- AUTO_INCREMENT de tabela `equipe`
+--
+ALTER TABLE `equipe`
+  MODIFY `idEquipe` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `pokemon`
 --
 ALTER TABLE `pokemon`
@@ -114,6 +140,13 @@ ALTER TABLE `troca`
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `equipe`
+--
+ALTER TABLE `equipe`
+  ADD CONSTRAINT `equipe_ibfk_1` FOREIGN KEY (`idPokemon`) REFERENCES `pokemon` (`idPokemon`),
+  ADD CONSTRAINT `equipe_ibfk_2` FOREIGN KEY (`idTreinador`) REFERENCES `treinador` (`idTreinador`);
 
 --
 -- Restrições para tabelas `pokemon`

@@ -12,6 +12,7 @@ if(!isset($_SESSION['idTreinador'])){
     <title>Mural de vagas de estágio</title>
 </head>
 <body>
-    <a href='sair.php'>Sair</a>  
+<a href='equipe.php'>Minha Equipe</a>      
+<a href='sair.php'>Sair</a>  
 </body>
 </html>
