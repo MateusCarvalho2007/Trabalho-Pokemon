@@ -56,13 +56,14 @@ class Treinador {
 
     public function authenticate():bool{
         $conexao = new MySQL();
-        $sql = "SELECT idTreinador, email, senha FROM treinador WHERE email = '{$this->email}'";
+        $sql = "SELECT idTreinador, nome, email, senha FROM treinador WHERE email = '{$this->email}'";
         $resultados = $conexao->consulta($sql);
         if(count($resultados)>0){
             if(password_verify($this->senha, $resultados[0]['senha'])){
                 session_start();
                 $_SESSION['idTreinador'] = $resultados[0]['idTreinador'];
                 $_SESSION['email'] = $resultados[0]['email'];
+                $_SESSION['nome'] = $resultados[0]['nome'];
                 return true;
             }else{
                 return false;

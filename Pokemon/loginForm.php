@@ -1,11 +1,11 @@
 <?php
     if(isset($_POST['botao'])){
-        require_once __DIR__."/classes/Usuario.php";
-        $usuario = new Usuario($_POST['email'],$_POST['senha']);
-        if($usuario->authenticate()){
+        require_once __DIR__."/classes/treinador.php";
+        $treinador = new Treinador($_POST['nome'],$_POST['email'],$_POST['senha']);
+        if($treinador->authenticate()){
             header("location: restrita.php");
         }else{
-            $msg = "Senha incorreta.";
+            header("location: index.php");
         }
     }
 ?>
@@ -18,6 +18,8 @@
 </head>
 <body>
     <form method='post' action='loginForm.php'>
+        <label for='nome'> Nome:</label>
+        <input type='nome' name='nome' id='nome' required>
         <label for='email'> E-mail:</label>
         <input type='email' name='email' id='email' required>
         <label for='senha'>Senha:</label>
