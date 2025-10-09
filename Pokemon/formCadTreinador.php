@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['botao'])){
-    require_once __DIR__."\classes\treinador.php";
+    require_once __DIR__."/classes/treinador.php";
     $t = new Treinador($_POST['nome'], $_POST['email'], $_POST['senha']);
     $t->save();
     header("location: index.php");
@@ -15,7 +15,7 @@ if(isset($_POST['botao'])){
     <title>Adiciona Usuario</title>
 </head>
 <body>
-    <form action='formCadUsuario.php' method='post'>
+    <form action='formCadTreinador.php' method='post'>
         <label for='nome'>Nome:</label>
         <input type='text' name='nome' id='nome' required>
         <label for='email'>E-mail:</label>

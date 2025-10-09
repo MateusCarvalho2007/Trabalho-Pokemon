@@ -19,7 +19,7 @@ if(!isset($_SESSION['idTreinador'])){
     <div class="container">
         <table>
             <br>
-            <tr><h1>Equipe</h1></tr>
+            <tr><h1>Não Trocar</h1></tr>
             <br>
         </table>
         <a href='restrita.php'>Voltar</a>

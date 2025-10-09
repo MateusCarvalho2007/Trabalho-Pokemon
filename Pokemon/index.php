@@ -6,6 +6,7 @@
     <title>Tela inicial</title>
 </head>
 <body>
+    <a href='formCadTreinador.php'>Cadastrar Conta</a>
     <a href='loginForm.php'>Fazer login</a>  
 </body>
 </html>
