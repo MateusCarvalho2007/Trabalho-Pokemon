@@ -1,11 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['idUsuario'])){
+if(!isset($_SESSION['idTreinador'])){
     header("location:loginForm.php");
-}
-if(isset($_GET['idVaga'])){
-    require_once __DIR__."/classes/Vaga.php";
-    Vaga::mudaStatus($_GET['idVaga']);
 }
 ?>
 <!DOCTYPE html>
