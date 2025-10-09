@@ -47,9 +47,9 @@ class Treinador {
         $conexao = new MySQL();
         $this->senha = password_hash($this->senha, PASSWORD_BCRYPT);
         if (isset($this->idTreinador)) {
-            $sql = "UPDATE treinador SET email = '{$this->email}', senha = '{$senhaHash}' WHERE idTreinador = {$this->idTreinador}";
+            $sql = "UPDATE treinador SET nome = '{$this->nome}',email = '{$this->email}', senha = '{$this->senha}' WHERE idTreinador = {$this->idTreinador}";
         } else {
-            $sql = "INSERT INTO treinador (email, senha) VALUES ('{$this->email}', '{$senhaHash}')";
+            $sql = "INSERT INTO treinador (nome,email, senha) VALUES ('{$this->nome}','{$this->email}', '{$this->senha}')";
         }
         return $conexao->executa($sql);
     }
