@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login de administração</title>
+    <title>Login Do Sistema de Trocas Pokémon</title>
 </head>
 <body>
     <form method='post' action='loginForm.php'>
