@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+    <div class='pesquisar'>
+        <input type="text" id='pesquisa' placeholder='Nome ou ID do Pokémon'>
+        <button id='botaoPesquisa'>Pesquisar</button>
+    </div>
+    <div id='pokedex'>
+        <div id='mensagemLoading' class='hidden'>
+            <p>Carregando...</p>
+        </div>
+        <div id='pokeInfo' class='hidden'>
+            <img id='pokeImagem' src="" alt="Imagem do Pokémon">
+            <h2 id='nomePokemon'>Nome do Pokémon:</h2>
+            <p id='descricaoPokemon'></p>
+        </div>
+        <div class='botoesNavegacao'>
+            <button id='botaoAnterior'>Pokémon Anterior</button>
+            <button id='botaoProximo'>Próximo Pokémon</button>
+        </div>
+        <div id='mensagemErro' class='hidden'>
+            <p>Pokémon não encontrado! Tente novamente!</p>
+        </div>
+    </div>
+<script src='script.js'></script>
+</body>
+</html>
