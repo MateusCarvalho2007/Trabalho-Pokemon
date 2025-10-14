@@ -5,7 +5,7 @@ if(!isset($_SESSION['idTreinador'])){
 }
 
 require_once __DIR__."/classes/pokemon.php";
-$Pokemons = pokemon::findNaoTrocavelPorUsuario($_SESSION['idTreinador']);
+$pokemons = pokemon::findNaoTrocavelPorUsuario($_SESSION['idTreinador']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +21,12 @@ $Pokemons = pokemon::findNaoTrocavelPorUsuario($_SESSION['idTreinador']);
             <tr><h1>Meus Pokemons</h1></tr>
             <br>
             <?php
-            foreach ($Pokemons as $Pokemon) {
+            foreach ($pokemons as $pokemon) {
                 echo "<tr>";
-                echo "<td>" . $Pokemon->getnome() . "</td>";
+                echo "<td>" . $pokemon->getnome() . "</td>";
                 echo "<td>
                         <form action='adicionarTrocavel.php' method='post'>
-                            <input type='hidden' name='idLPokemon' value='" . $Pokemon->getidPokemon() . "'>
+                            <input type='hidden' name='idpokemon' value='" . $pokemon->getIdPokemon() . "'>
                             <button type='submit'>AddTrocavel</button>
                         </form>
                       </td>";
@@ -37,6 +37,7 @@ $Pokemons = pokemon::findNaoTrocavelPorUsuario($_SESSION['idTreinador']);
         </table>
 <a href='formCadPokemon.php'>Cadastrar Pokémon</a>    
 <a href='NaoQueroTrocar.php'>Não quero Trocar</a>      
-<a href='sair.php'>Sair</a>  
+<a href='sair.php'>Sair</a> 
+</div> 
 </body>
 </html>

@@ -12,7 +12,7 @@ class Pokemon {
         $this->idPokemon = $idPokemon;
     }
 
-    public function getIdPokemon(): ?int {
+    public function getIdPokemon() {
         return $this->idPokemon;
     }
 
@@ -86,22 +86,24 @@ class Pokemon {
     }
 
     public static function findNaoTrocavelPorUsuario(int $idTreinador): array {
-        $sql = "SELECT p.nome, p.tipo,p.descricao FROM pokemon p
-                LEFT JOIN pokemonTrocavel t ON p.idPokemon = t.idPokemonTrocavel
-                WHERE t.idPokemonTrocavel IS NULL";
+    $sql = "SELECT p.idPokemon, p.nome, p.tipo, p.descricao
+            FROM pokemon p
+            LEFT JOIN pokemonTrocavel t ON p.idPokemon = t.idPokemonTrocavel
+            WHERE t.idPokemonTrocavel IS NULL
+              AND p.idTreinador = {$idTreinador}";
 
-        $conexao = new MySQL();
-        $resultados = $conexao->consulta($sql);
+    $conexao = new MySQL();
+    $resultados = $conexao->consulta($sql);
 
-        $pokemons = [];
-        foreach ($resultados as $resultado) {
-            $p = new Pokemon($resultado['nome'], $resultado['tipo'], $resultado['descricao']);
-            if (isset($resultado['idPokemon'])) {
-                $p->setIdPokemon($resultado['idPokemon']);
-            }
-            $pokemons[] = $p;
-        }
-        return $pokemons;
+    $pokemons = [];
+    foreach ($resultados as $resultado) {
+        $p = new Pokemon($resultado['nome'], $resultado['tipo'], $resultado['descricao']);
+        $p->setIdPokemon($resultado['idPokemon']);
+        $pokemons[] = $p;
     }
+
+    return $pokemons;
+}
+
 
 }
