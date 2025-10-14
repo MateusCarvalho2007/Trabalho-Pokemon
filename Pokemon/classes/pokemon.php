@@ -85,4 +85,23 @@ class Pokemon {
         return $pokemons;
     }
 
+    public static function findNaoTrocavelPorUsuario(int $idTreinador): array {
+        $sql = "SELECT p.* FROM pokemon p
+                LEFT JOIN troca t ON (p.idPokemon = t.idPokemon1 OR p.idPokemon = t.idPokemon2)
+                WHERE p.idTreinador = {$idTreinador} AND t.idTroca IS NULL";
+
+        $conexao = new MySQL();
+        $resultados = $conexao->consulta($sql);
+
+        $pokemons = [];
+        foreach ($resultados as $resultado) {
+            $p = new Pokemon($resultado['nome'], $resultado['tipo'], $resultado['descricao']);
+            if (isset($resultado['idPokemon'])) {
+                $p->setIdPokemon($resultado['idPokemon']);
+            }
+            $pokemons[] = $p;
+        }
+        return $pokemons;
+    }
+
 }
