@@ -86,9 +86,9 @@ class Pokemon {
     }
 
     public static function findNaoTrocavelPorUsuario(int $idTreinador): array {
-        $sql = "SELECT p.* FROM pokemon p
-                LEFT JOIN troca t ON (p.idPokemon = t.idPokemon1 OR p.idPokemon = t.idPokemon2)
-                WHERE p.idTreinador = {$idTreinador} AND t.idTroca IS NULL";
+        $sql = "SELECT p.nome, p.tipo,p.descricao FROM pokemon p
+                LEFT JOIN pokemonTrocavel t ON p.idPokemon = t.idPokemonTrocavel
+                WHERE t.idPokemonTrocavel IS NULL";
 
         $conexao = new MySQL();
         $resultados = $conexao->consulta($sql);
