@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    background-image: url('PokeFundo.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: black;
+}
+
+#pokedex {
+    position: relative;
+    width: 500px;
+    margin: 40px auto;
+    z-index: 1;
+}
+
+#pokedex .pokedex-frame {
+    width: 100%;
+    display: block;
+}
+
+#pokedex .pokedex-info {
+    position: absolute;
+    top: 250px;    /* ajuste para alinhar com a tela da pokédex */
+    left: 120px;   /* ajuste para alinhar com a tela da pokédex */
+    width: 215px; /* ajuste para o tamanho da tela da pokédex */
+    height: 180px;/* ajuste para o tamanho da tela da pokédex */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.85em;
+    pointer-events: none;
+}
+
+#pokeInfo, #mensagemLoading, #mensagemErro, .botoesNavegacao {
+    pointer-events: auto;
+}
+
+
+#pokeInfo img {
+    max-width: 40px;
+    margin-bottom: 2px;
+}
+
+#pokeInfo h2, #pokeInfo p {
+    margin: 2px 0;
+    font-size: 0.85em;
+    line-height: 1.1;
+    word-break: break-word;
+}
+
+.botoesNavegacao {
+    margin-top: 4px;
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.botoesNavegacao button {
+    font-size: 0.8em;
+    padding: 3px 8px;
+}
+
+
+
+
+.hidden {
+    display: none;
+}
+
+#mensagem-erro {
+    font-size: 1.5em;
+    color: red;
+    margin: 20px 0;
+}
+
+
+
+.sessao-botoes-pesquisa, .botoes-navegacao{
+    margin: 10px 0;
+}
+
+.pesquisar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#pesquisa {
+    width: 250px;
+    height: 30px;
+    padding: 5px 10px;
+    text-align: center;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.85em;
+    font-size: 0.85em;
+
+}
+
+button{
+    padding: 10px 20px;
+    border: none;
+    background-color: #ffcc00;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #ff9900;
+}
+
+button:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding: 15px;
+    }
+
+    #pesquisa{
+        width: 50px;
+    }
+
+    #btn-pesquisa {
+        margin: 10px 0px 0px 10px;
+    }
+}

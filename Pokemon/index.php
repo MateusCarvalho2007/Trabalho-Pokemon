@@ -7,6 +7,7 @@
 </head>
 <body>
     <a href='formCadTreinador.php'>Cadastrar Conta</a>
-    <a href='loginForm.php'>Fazer login</a>  
+    <a href='loginForm.php'>Fazer login</a>
+    <a href='pokedex.html'>Pokedex</a>  
 </body>
 </html>
