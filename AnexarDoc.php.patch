@@ -1,0 +1,64 @@
+*** Begin Patch
+*** Update File: c:\xampp\htdocs\AAGIS\AAGIS\AnexarDoc.php
+@@
+-    // calcular desiredStatus conforme mesma lógica usada nas listagens
+-    $desiredStatus = $currentStatus;
+-    if (empty($arquivo)) {
+-        $desiredStatus = Documento::STATUS_PENDENTE; // Não Enviado
+-    } else {
+-        if (!empty($prazo)) {
+-            $prazoTs = strtotime($prazo);
+-            $nowTs = time();
+-            if ($prazoTs < $nowTs) {
+-                if (!empty($dataEnvio)) {
+-                    $envioTs = strtotime($dataEnvio);
+-                    if ($envioTs <= $prazoTs) {
+-                        $desiredStatus = Documento::STATUS_PENDENTE; // Em Análise
+-                    } else {
+-                        $desiredStatus = Documento::STATUS_ATRASADO;
+-                    }
+-                } else {
+-                    // sem dataEnvio -> considerar Atrasado (prazo passou)
+-                    $desiredStatus = Documento::STATUS_ATRASADO;
+-                }
+-            } else {
+-                $desiredStatus = Documento::STATUS_ENVIADO; // prazo futuro
+-            }
+-        } else {
+-            // sem prazo
+-            if ($currentStatus === Documento::STATUS_CONCLUIDO) {
+-                $desiredStatus = Documento::STATUS_CONCLUIDO;
+-            } else {
+-                $desiredStatus = Documento::STATUS_ENVIADO;
+-            }
+-        }
+-    }
++    // calcular desiredStatus: se já houver data de envio, considerar Entregue
++    $desiredStatus = $currentStatus;
++    if (empty($arquivo)) {
++        $desiredStatus = Documento::STATUS_PENDENTE; // Não Enviado
++    } else {
++        // se já existe data de envio, mostrar como Entregue independentemente do prazo
++        if (!empty($dataEnvio)) {
++            $desiredStatus = Documento::STATUS_ENVIADO;
++        } else {
++            if (!empty($prazo)) {
++                $prazoTs = strtotime($prazo);
++                $nowTs = time();
++                if ($prazoTs < $nowTs) {
++                    // prazo passou e sem data de envio -> Atrasado
++                    $desiredStatus = Documento::STATUS_ATRASADO;
++                } else {
++                    $desiredStatus = Documento::STATUS_ENVIADO; // prazo futuro
++                }
++            } else {
++                // sem prazo
++                if ($currentStatus === Documento::STATUS_CONCLUIDO) {
++                    $desiredStatus = Documento::STATUS_CONCLUIDO;
++                } else {
++                    $desiredStatus = Documento::STATUS_ENVIADO;
++                }
++            }
++        }
++    }
+*** End Patch
